@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:examapp/pages/teacher/teacherdashboard.dart';
+import 'package:examapp/pages/teacher/dashboard.dart';
 import 'package:examapp/services/authentication_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

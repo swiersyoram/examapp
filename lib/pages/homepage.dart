@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './teacher/teacherlogin.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -17,13 +16,12 @@ class HomePage extends StatelessWidget {
           // the App.build method, and use it to set our appbar title.
         ),
         body: Center(
-          child: Container(
-              child: Column(
+          child: Column(
             children: [
               Image.asset(
                 "assets/images/ap_logo.png",
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -72,7 +70,7 @@ class HomePage extends StatelessWidget {
               )
             ],
             mainAxisAlignment: MainAxisAlignment.center,
-          )),
+          ),
         ));
   }
 }

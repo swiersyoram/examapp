@@ -1,5 +1,5 @@
-import 'package:examapp/pages/teacher/teacherdashboard.dart';
-import 'package:examapp/pages/teacher/teacherlogin.dart';
+import 'package:examapp/pages/teacher/dashboard.dart';
+import 'package:examapp/pages/teacher/login.dart';
 import 'package:examapp/services/authentication_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +11,10 @@ import 'firebase_options.dart';
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 Future<void> main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
   runApp(const ExamApp());
 }
 
@@ -46,7 +45,8 @@ class ExamApp extends StatelessWidget {
             '/': (context) => HomePage(),
             // When navigating to the "/second" route, build the SecondScreen widget.
             '/teacherlogin': (context) => TeacherLogin(),
-            '/teacherdashboard': (context) => TeacherDashboard(),
+            '/teacherdashboard': (context) => const TeacherDashboard(),
+            // '/teacherdashboard/examtemplates': (context) => ExamTemplates(),
           },
         ));
   }
