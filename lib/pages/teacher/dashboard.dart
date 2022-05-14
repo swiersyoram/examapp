@@ -118,9 +118,10 @@ class TeacherDashboard extends StatelessWidget {
                             onPressed: () {},
                             child: Column(
                               children: [
-                                Icon(Icons.person, size: 70),
+                                FaIcon(FontAwesomeIcons.mapLocation, size: 60),
+                                SizedBox(height: 20),
                                 Text(
-                                  "Users",
+                                  "Map",
                                   style: TextStyle(fontSize: 25),
                                 )
                               ],

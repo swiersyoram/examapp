@@ -1,3 +1,4 @@
+import 'package:examapp/pages/student/signup.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -30,12 +31,12 @@ class HomePage extends StatelessWidget {
                         Navigator.pushNamed(context, '/teacherlogin');
                       },
                       style: ButtonStyle(
-                          padding:
-                              MaterialStateProperty.all(EdgeInsets.all(20)),
+                          padding: MaterialStateProperty.all(
+                              const EdgeInsets.all(20)),
                           backgroundColor:
                               MaterialStateProperty.all(Colors.grey)),
                       child: Column(
-                        children: [
+                        children: const [
                           Icon(
                             Icons.co_present,
                             size: 60,
@@ -53,7 +54,12 @@ class HomePage extends StatelessWidget {
                               MaterialStateProperty.all(EdgeInsets.all(20)),
                           backgroundColor:
                               MaterialStateProperty.all(Colors.grey)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUp()),
+                        );
+                      },
                       child: Column(
                         children: [
                           Icon(
