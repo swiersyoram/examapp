@@ -1,4 +1,7 @@
+import 'package:examapp/pages/teacher/examentries.dart';
 import 'package:examapp/pages/teacher/examtemplates.dart';
+import 'package:examapp/pages/teacher/users.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:examapp/services/authentication_service.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +47,13 @@ class TeacherDashboard extends StatelessWidget {
                                 minimumSize: const Size(250, 150),
                                 padding: EdgeInsets.all(20),
                                 primary: Colors.grey[700]),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ExamEntries()),
+                              );
+                            },
                             child: Column(
                               children: [
                                 FaIcon(FontAwesomeIcons.fileCircleCheck,
@@ -96,13 +105,19 @@ class TeacherDashboard extends StatelessWidget {
                                 minimumSize: const Size(250, 150),
                                 padding: EdgeInsets.all(20),
                                 primary: Colors.grey[700]),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Users()),
+                              );
+                            },
                             child: Column(
                               children: [
                                 FaIcon(FontAwesomeIcons.users, size: 60),
                                 SizedBox(height: 20),
                                 Text(
-                                  "Users",
+                                  "Students",
                                   style: TextStyle(fontSize: 25),
                                 )
                               ],
@@ -110,22 +125,6 @@ class TeacherDashboard extends StatelessWidget {
                         SizedBox(
                           width: 20,
                         ),
-                        ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                minimumSize: const Size(250, 150),
-                                padding: EdgeInsets.all(20),
-                                primary: Colors.grey[700]),
-                            onPressed: () {},
-                            child: Column(
-                              children: [
-                                FaIcon(FontAwesomeIcons.mapLocation, size: 60),
-                                SizedBox(height: 20),
-                                Text(
-                                  "Map",
-                                  style: TextStyle(fontSize: 25),
-                                )
-                              ],
-                            ))
                       ],
                     ),
                   ],

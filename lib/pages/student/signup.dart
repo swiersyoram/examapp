@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:examapp/pages/student/examlist.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -16,13 +19,15 @@ class SignUp extends StatelessWidget {
       body: Center(
         child: SizedBox(
           width: 400,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
+            shrinkWrap: true,
             children: [
-              FaIcon(
-                FontAwesomeIcons.user,
-                color: Colors.grey,
-                size: 100,
+              Center(
+                child: FaIcon(
+                  FontAwesomeIcons.user,
+                  color: Colors.grey,
+                  size: 100,
+                ),
               ),
               SizedBox(
                 height: 20,
@@ -64,17 +69,15 @@ class SignUp extends StatelessWidget {
                 height: 25,
               ),
               TextField(
-                controller: studentidcontroller,
-                decoration: InputDecoration(
-                  labelText: "Student ID",
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.red, width: 3.0),
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                ),
-                obscureText: true,
-                enableSuggestions: false,
-              ),
+                  controller: studentidcontroller,
+                  decoration: InputDecoration(
+                    labelText: "Student ID",
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.red, width: 3.0),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  )),
               SizedBox(
                 height: 50,
               ),
@@ -83,12 +86,33 @@ class SignUp extends StatelessWidget {
                       padding: MaterialStateProperty.all(
                           EdgeInsets.only(left: 50, right: 50)),
                       backgroundColor: MaterialStateProperty.all(Colors.green)),
-                  onPressed: () {
-                    users.add({
-                      "firstname": firstnamecontroller.text,
-                      "lastname": lastnamecontroller.text,
-                      "studentid": studentidcontroller.text
-                    }).then((value) => print("user added"));
+                  onPressed: () async {
+                    final user = await users
+                        .where("studentid", isEqualTo: studentidcontroller.text)
+                        .get()
+                        .then((value) {
+                      if (value.docs.length > 0) {
+                        // log(value.docs.first.id);
+                        return value.docs.first;
+                      } else {
+                        log("no document found");
+                        final user = {
+                          "firstname": firstnamecontroller.text,
+                          "lastname": lastnamecontroller.text,
+                          "studentid": studentidcontroller.text
+                        };
+                        return users.add(user).then((value) {
+                          return users.doc(value.id).get();
+                        });
+                      }
+                    });
+                    // log(user.toString());
+                    // log(userid.toString());
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => ExamList(user)),
+                      (route) => false,
+                    );
                   },
                   child: Text("Check-in")),
             ],
