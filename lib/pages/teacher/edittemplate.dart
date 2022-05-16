@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,6 +19,7 @@ class _EditTemplateState extends State<EditTemplate> {
   final TextEditingController namecontroller = TextEditingController();
   CollectionReference templates =
       FirebaseFirestore.instance.collection("exam_templates");
+  bool switchValue = false;
   @override
   void initState() {
     super.initState();
@@ -25,12 +27,14 @@ class _EditTemplateState extends State<EditTemplate> {
       namecontroller.text = widget.template["name"];
       if (widget.template["questions"] != null)
         questions = widget.template["questions"];
+      switchValue = widget.template["active"];
     }
   }
 
   List questions = [];
   @override
   Widget build(BuildContext context) {
+    // log(widget.template.data().toString());
     return Scaffold(
       appBar: AppBar(),
       body: Container(
@@ -41,12 +45,25 @@ class _EditTemplateState extends State<EditTemplate> {
             SizedBox(
               height: 20,
             ),
-            Text(
-              "Exam Template",
-              style: TextStyle(
-                  fontSize: 35,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey),
+            Row(
+              children: [
+                Text(
+                  "Exam Template",
+                  style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey),
+                ),
+                Spacer(),
+                CupertinoSwitch(
+                  value: switchValue,
+                  onChanged: (value) {
+                    setState(() {
+                      switchValue = value;
+                    });
+                  },
+                ),
+              ],
             ),
             SizedBox(
               height: 20,
@@ -209,13 +226,15 @@ class _EditTemplateState extends State<EditTemplate> {
                       if (widget.template != null) {
                         templates.doc(widget.template.id).update({
                           'name': namecontroller.text,
-                          'questions': questions
+                          'questions': questions,
+                          'active': switchValue
                         }).then((value) => Navigator.pop(context));
                       } else {
                         // log(questions.toString());
                         templates.add({
                           'name': namecontroller.text,
-                          'questions': questions
+                          'questions': questions,
+                          'active': switchValue
                         }).then((value) => Navigator.pop(context));
                       }
                     },

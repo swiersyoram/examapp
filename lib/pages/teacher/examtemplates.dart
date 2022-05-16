@@ -76,14 +76,36 @@ class ExamTemplates extends StatelessWidget {
                     itemBuilder: (context, index) {
                       String id = data.docs[index].id;
                       return ListTile(
-                        title: Text(
-                          data.docs[index]["name"],
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Colors.grey[700]),
+                        title: Row(
+                          children: [
+                            Text(
+                              data.docs[index]["name"],
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.grey[700]),
+                            ),
+                            SizedBox(
+                              width: 30,
+                            ),
+                            Text(
+                              data.docs[index]["active"]
+                                  ? "active"
+                                  : "not active",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: data.docs[index]["active"]
+                                      ? Colors.green
+                                      : Colors.red),
+                            ),
+                          ],
                         ),
                         trailing: Wrap(children: [
+                          SizedBox(
+                            width: 10,
+                          ),
                           ElevatedButton(
                               onPressed: () {
                                 FirebaseFirestore.instance

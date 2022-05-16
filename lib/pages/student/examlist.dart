@@ -37,6 +37,7 @@ class ExamList extends StatelessWidget {
               child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection("exam_templates")
+                    .where('active', isEqualTo: true)
                     .snapshots(),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.hasError) {
