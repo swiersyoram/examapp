@@ -33,7 +33,7 @@ class Users extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
+            SizedBox(
               width: 400,
               child: StreamBuilder<QuerySnapshot>(
                 stream:

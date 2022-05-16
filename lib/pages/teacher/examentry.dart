@@ -240,6 +240,5 @@ class _ExamEntryState extends State<ExamEntry> {
         ),
       ),
     );
-    ;
   }
 }
