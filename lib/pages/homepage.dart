@@ -2,6 +2,8 @@ import 'package:examapp/pages/student/signup.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -47,21 +49,22 @@ class HomePage extends StatelessWidget {
                           )
                         ],
                       )),
-                  SizedBox(width: 80),
+                  const SizedBox(width: 80),
                   ElevatedButton(
                       style: ButtonStyle(
-                          padding:
-                              MaterialStateProperty.all(EdgeInsets.all(20)),
+                          padding: MaterialStateProperty.all(
+                              const EdgeInsets.all(20)),
                           backgroundColor:
                               MaterialStateProperty.all(Colors.grey)),
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => SignUp()),
+                          MaterialPageRoute(
+                              builder: (context) => const SignUp()),
                         );
                       },
                       child: Column(
-                        children: [
+                        children: const [
                           Icon(
                             Icons.person,
                             size: 60,

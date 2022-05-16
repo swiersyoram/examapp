@@ -42,9 +42,9 @@ class ExamApp extends StatelessWidget {
           initialRoute: '/',
           routes: {
             // When navigating to the "/" route, build the FirstScreen widget.
-            '/': (context) => HomePage(),
+            '/': (context) => const HomePage(),
             // When navigating to the "/second" route, build the SecondScreen widget.
-            '/teacherlogin': (context) => TeacherLogin(),
+            '/teacherlogin': (context) => const TeacherLogin(),
             '/teacherdashboard': (context) => const TeacherDashboard(),
             // '/teacherdashboard/examtemplates': (context) => ExamTemplates(),
           },

@@ -13,9 +13,9 @@ class Success extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                   "Het examen is succesvol ingediend, keer terug naar het startscherm!"),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
@@ -23,11 +23,11 @@ class Success extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (context) => HomePage()),
+                      MaterialPageRoute(builder: (context) => const HomePage()),
                       (route) => false,
                     );
                   },
-                  child: Text("Terug naar home"))
+                  child: const Text("Terug naar home"))
             ]),
       ),
     );

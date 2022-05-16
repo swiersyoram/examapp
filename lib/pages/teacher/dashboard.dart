@@ -32,30 +32,30 @@ class TeacherDashboard extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Teachers dashboard",
                       style: TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey),
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Row(
                       children: [
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 minimumSize: const Size(250, 150),
-                                padding: EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(20),
                                 primary: Colors.grey[700]),
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => ExamEntries()),
+                                    builder: (context) => const ExamEntries()),
                               );
                             },
                             child: Column(
-                              children: [
+                              children: const [
                                 FaIcon(FontAwesomeIcons.fileCircleCheck,
                                     size: 60),
                                 SizedBox(
@@ -67,24 +67,24 @@ class TeacherDashboard extends StatelessWidget {
                                 )
                               ],
                             )),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 minimumSize: const Size(250, 150),
-                                padding: EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(20),
                                 primary: Colors.grey[700]),
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ExamTemplates(),
+                                  builder: (context) => const ExamTemplates(),
                                 ),
                               );
                             },
                             child: Column(
-                              children: [
+                              children: const [
                                 FaIcon(FontAwesomeIcons.filePen, size: 60),
                                 SizedBox(height: 10),
                                 Text(
@@ -95,7 +95,7 @@ class TeacherDashboard extends StatelessWidget {
                             ))
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(
@@ -103,17 +103,17 @@ class TeacherDashboard extends StatelessWidget {
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 minimumSize: const Size(250, 150),
-                                padding: EdgeInsets.all(20),
+                                padding: const EdgeInsets.all(20),
                                 primary: Colors.grey[700]),
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Users()),
+                                    builder: (context) => const Users()),
                               );
                             },
                             child: Column(
-                              children: [
+                              children: const [
                                 FaIcon(FontAwesomeIcons.users, size: 60),
                                 SizedBox(height: 20),
                                 Text(
@@ -122,7 +122,7 @@ class TeacherDashboard extends StatelessWidget {
                                 )
                               ],
                             )),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                       ],
@@ -134,12 +134,12 @@ class TeacherDashboard extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.bottomLeft,
-              padding: EdgeInsets.fromLTRB(10, 0, 0, 5),
+              padding: const EdgeInsets.fromLTRB(10, 0, 0, 5),
               child: ElevatedButton(
                   onPressed: () {
                     context.read<AuthenticationService>().signOut();
                   },
-                  child: Text("sign out")),
+                  child: const Text("sign out")),
             )
           ]),
     );

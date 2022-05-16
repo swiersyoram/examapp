@@ -1,12 +1,12 @@
 import 'dart:developer';
 
-import 'package:examapp/pages/teacher/dashboard.dart';
 import 'package:examapp/services/authentication_service.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TeacherLogin extends StatefulWidget {
+  const TeacherLogin({Key? key}) : super(key: key);
+
   @override
   State<TeacherLogin> createState() => _TeacherLoginState();
 }
@@ -31,19 +31,19 @@ class _TeacherLoginState extends State<TeacherLogin> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.co_present,
                 color: Colors.grey,
                 size: 100,
               ),
-              Text(
+              const Text(
                 "Teacher login",
                 style: TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               TextField(
@@ -57,7 +57,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               TextField(
@@ -75,7 +75,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
               ),
               Container(
                   child: showerror
-                      ? Column(children: [
+                      ? Column(children: const [
                           SizedBox(
                             height: 20,
                           ),
@@ -85,13 +85,13 @@ class _TeacherLoginState extends State<TeacherLogin> {
                           )
                         ])
                       : null),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               ElevatedButton(
                   style: ButtonStyle(
                       padding: MaterialStateProperty.all(
-                          EdgeInsets.only(left: 50, right: 50)),
+                          const EdgeInsets.only(left: 50, right: 50)),
                       backgroundColor: MaterialStateProperty.all(Colors.green)),
                   onPressed: () async {
                     final code = await context
@@ -107,7 +107,7 @@ class _TeacherLoginState extends State<TeacherLogin> {
                       });
                     }
                   },
-                  child: Text("login")),
+                  child: const Text("login")),
             ],
           ),
         ),

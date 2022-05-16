@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:geolocator/geolocator.dart';
@@ -48,7 +45,6 @@ class _CheckState extends State<Check> {
   late Position position;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _determinePosition().then((value) {
       // log(value.toString());
@@ -89,16 +85,16 @@ class _CheckState extends State<Check> {
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
-            Container(
+            SizedBox(
               width: 600,
               child: Row(
                 children: [
                   Row(
-                    children: [
-                      const Text(
+                    children: const [
+                      Text(
                         "Location",
                         style: TextStyle(
                             fontSize: 35,
@@ -114,7 +110,7 @@ class _CheckState extends State<Check> {
                       )
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     locationReady ? "Ready" : "Not ready",
                     style: TextStyle(
@@ -123,7 +119,7 @@ class _CheckState extends State<Check> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             ElevatedButton(

@@ -1,13 +1,9 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:examapp/pages/homepage.dart';
 import 'package:examapp/pages/student/succes.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:location/location.dart';
-
-import 'check.dart';
 
 class Exam extends StatefulWidget {
   final template;
@@ -22,10 +18,9 @@ class Exam extends StatefulWidget {
 class _ExamState extends State<Exam> {
   CollectionReference examentries =
       FirebaseFirestore.instance.collection("exam_entries");
-  DateTime time = new DateTime.now();
+  DateTime time = DateTime.now();
   @override
   void initState() {
-    // TODO: implement initState
     template = widget.template.data();
     for (var question in template['questions']) {
       question["user_answer"] = "";
@@ -45,44 +40,44 @@ class _ExamState extends State<Exam> {
         child: SizedBox(
           width: 600,
           child: ListView(children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
               "Hey ${widget.user.data()["firstname"]},",
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               "Probeer het examen naar best vermogen op te lossen. Succes!",
               style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
               template["name"],
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'Questions',
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ListView.builder(
@@ -101,37 +96,37 @@ class _ExamState extends State<Exam> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 30,
                             ),
                             Row(
                               children: [
                                 Text(
                                   'Question ${index + 1}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Text(
                                   "/${template["questions"][index]["max_credit"]}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
-                            Text(
+                            const Text(
                               "Question:",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
                             ),
                             Text(widget.template.data()["questions"][index]
                                 ["question"]),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
-                            Text(
+                            const Text(
                               "Answer:",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 16),
@@ -144,7 +139,7 @@ class _ExamState extends State<Exam> {
                                 });
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                           ],
@@ -153,7 +148,7 @@ class _ExamState extends State<Exam> {
                     ),
                   );
                 }),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton(
@@ -175,7 +170,7 @@ class _ExamState extends State<Exam> {
                     (route) => false,
                   );
                 },
-                child: Text("Examen indienen "))
+                child: const Text("Examen indienen "))
           ]),
         ),
       ),

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:examapp/main.dart';
 import "package:firebase_auth/firebase_auth.dart";
 import 'package:flutter/material.dart';
@@ -10,7 +8,7 @@ class AuthenticationService {
 
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
   Future<void> signOut() async {
-    await this._firebaseAuth.signOut();
+    await _firebaseAuth.signOut();
     navigatorKey.currentState!
         .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
   }

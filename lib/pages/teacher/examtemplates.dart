@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:examapp/pages/teacher/edittemplate.dart';
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -16,20 +13,20 @@ class ExamTemplates extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Exam Templates",
                 style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               ElevatedButton(
@@ -38,12 +35,12 @@ class ExamTemplates extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => EditTemplate(),
+                        builder: (context) => const EditTemplate(),
                       ),
                     );
                   },
                   child: Row(
-                    children: [
+                    children: const [
                       FaIcon(FontAwesomeIcons.plus),
                       SizedBox(
                         width: 10,
@@ -55,17 +52,17 @@ class ExamTemplates extends StatelessWidget {
           ),
           Container(
             width: 800,
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection("exam_templates")
                   .snapshots(),
               builder: (context, AsyncSnapshot snapshot) {
                 if (snapshot.hasError) {
-                  return Text("something went wrong");
+                  return const Text("something went wrong");
                 }
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text("data loading");
+                  return const Text("data loading");
                 }
                 final data = snapshot.requireData;
                 // log(data.docs);
@@ -85,7 +82,7 @@ class ExamTemplates extends StatelessWidget {
                                   fontSize: 20,
                                   color: Colors.grey[700]),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 30,
                             ),
                             Text(
@@ -103,7 +100,7 @@ class ExamTemplates extends StatelessWidget {
                           ],
                         ),
                         trailing: Wrap(children: [
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           ElevatedButton(
@@ -113,8 +110,8 @@ class ExamTemplates extends StatelessWidget {
                                     .doc(id)
                                     .delete();
                               },
-                              child: FaIcon(FontAwesomeIcons.trashCan)),
-                          SizedBox(
+                              child: const FaIcon(FontAwesomeIcons.trashCan)),
+                          const SizedBox(
                             width: 10,
                           ),
                           ElevatedButton(
@@ -129,7 +126,7 @@ class ExamTemplates extends StatelessWidget {
                                   ),
                                 );
                               },
-                              child: FaIcon(FontAwesomeIcons.penToSquare))
+                              child: const FaIcon(FontAwesomeIcons.penToSquare))
                         ]),
                       );
                     });

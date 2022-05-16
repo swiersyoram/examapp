@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:examapp/pages/teacher/examentry.dart';
 import 'package:flutter/material.dart';
@@ -36,9 +34,9 @@ class ExamEntries extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               "Exam entries",
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
@@ -113,7 +111,7 @@ class ExamEntries extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                child: Text("inspect"))
+                                child: const Text("inspect"))
                           ]),
                         );
                       });

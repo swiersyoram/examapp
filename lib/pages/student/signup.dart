@@ -22,24 +22,24 @@ class SignUp extends StatelessWidget {
           child: ListView(
             shrinkWrap: true,
             children: [
-              Center(
+              const Center(
                 child: FaIcon(
                   FontAwesomeIcons.user,
                   color: Colors.grey,
                   size: 100,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "Student check-in",
                 style: TextStyle(
                     fontSize: 50,
                     fontWeight: FontWeight.bold,
                     color: Colors.grey),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               TextField(
@@ -52,7 +52,7 @@ class SignUp extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               TextField(
@@ -65,7 +65,7 @@ class SignUp extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               TextField(
@@ -78,20 +78,20 @@ class SignUp extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 50,
               ),
               ElevatedButton(
                   style: ButtonStyle(
                       padding: MaterialStateProperty.all(
-                          EdgeInsets.only(left: 50, right: 50)),
+                          const EdgeInsets.only(left: 50, right: 50)),
                       backgroundColor: MaterialStateProperty.all(Colors.green)),
                   onPressed: () async {
                     final user = await users
                         .where("studentid", isEqualTo: studentidcontroller.text)
                         .get()
                         .then((value) {
-                      if (value.docs.length > 0) {
+                      if (value.docs.isNotEmpty) {
                         // log(value.docs.first.id);
                         return value.docs.first;
                       } else {
@@ -114,7 +114,7 @@ class SignUp extends StatelessWidget {
                       (route) => false,
                     );
                   },
-                  child: Text("Check-in")),
+                  child: const Text("Check-in")),
             ],
           ),
         ),

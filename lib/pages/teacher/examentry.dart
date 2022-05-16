@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ExamEntry extends StatefulWidget {
-  ExamEntry(this.exam, {Key? key}) : super(key: key);
+  const ExamEntry(this.exam, {Key? key}) : super(key: key);
   final exam;
 
   @override
@@ -18,7 +18,6 @@ class _ExamEntryState extends State<ExamEntry> {
   var exam;
   @override
   void initState() {
-    // TODO: implement initState
     exam = widget.exam.data();
     if (!exam["exam"]["questions"].first.containsKey("credit")) {
       for (var question in exam["exam"]["questions"]) {
@@ -35,21 +34,21 @@ class _ExamEntryState extends State<ExamEntry> {
     return Scaffold(
       appBar: AppBar(),
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: SizedBox(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
               "Exam from ${widget.exam["user"]["firstname"]} ${widget.exam["user"]["lastname"]}",
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Text(
@@ -80,17 +79,17 @@ class _ExamEntryState extends State<ExamEntry> {
                   fontSize: 16,
                   color: Colors.grey[700]),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'Questions',
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
@@ -114,22 +113,22 @@ class _ExamEntryState extends State<ExamEntry> {
                                   children: [
                                     Text(
                                       'Question ${index + 1}',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Spacer(),
+                                    const Spacer(),
                                     Row(
                                       children: [
                                         Text(
                                           "${exam["exam"]["questions"][index]["credit"]}",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold),
                                         ),
                                         Text(
                                           "/${widget.exam["exam"]["questions"][index]["max_credit"]}",
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold),
                                         )
@@ -137,7 +136,7 @@ class _ExamEntryState extends State<ExamEntry> {
                                     )
                                   ],
                                 ),
-                                Text(
+                                const Text(
                                   "Question:",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -145,21 +144,21 @@ class _ExamEntryState extends State<ExamEntry> {
                                 ),
                                 Text(widget.exam["exam"]["questions"][index]
                                     ["question"]),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
-                                Text(
+                                const Text(
                                   "Answer:",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 16),
                                 ),
                                 Text(widget.exam["exam"]["questions"][index]
                                     ["answer"]),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
-                                Text(
+                                const Text(
                                   "Answer Student:",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -167,10 +166,10 @@ class _ExamEntryState extends State<ExamEntry> {
                                 ),
                                 Text(widget.exam["exam"]["questions"][index]
                                     ["user_answer"]),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
-                                Text(
+                                const Text(
                                   "Score:",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -212,7 +211,7 @@ class _ExamEntryState extends State<ExamEntry> {
                         ),
                       );
                     })),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -222,8 +221,8 @@ class _ExamEntryState extends State<ExamEntry> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text("cancel")),
-                SizedBox(
+                    child: const Text("cancel")),
+                const SizedBox(
                   width: 80,
                 ),
                 ElevatedButton(
@@ -234,7 +233,7 @@ class _ExamEntryState extends State<ExamEntry> {
                           .update(exam)
                           .then((value) => Navigator.pop(context));
                     },
-                    child: Text("save"))
+                    child: const Text("save"))
               ],
             )
           ]),

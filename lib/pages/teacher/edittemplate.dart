@@ -25,8 +25,9 @@ class _EditTemplateState extends State<EditTemplate> {
     super.initState();
     if (widget.template != null) {
       namecontroller.text = widget.template["name"];
-      if (widget.template["questions"] != null)
+      if (widget.template["questions"] != null) {
         questions = widget.template["questions"];
+      }
       switchValue = widget.template["active"];
     }
   }
@@ -42,19 +43,19 @@ class _EditTemplateState extends State<EditTemplate> {
         child: SizedBox(
           width: 600,
           child: Column(children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               children: [
-                Text(
+                const Text(
                   "Exam Template",
                   style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey),
                 ),
-                Spacer(),
+                const Spacer(),
                 CupertinoSwitch(
                   value: switchValue,
                   onChanged: (value) {
@@ -65,7 +66,7 @@ class _EditTemplateState extends State<EditTemplate> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             TextField(
@@ -78,19 +79,19 @@ class _EditTemplateState extends State<EditTemplate> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               children: [
-                Text(
+                const Text(
                   'Questions',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.grey),
                 ),
-                Spacer(),
+                const Spacer(),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.blue),
                     onPressed: () {
@@ -100,13 +101,13 @@ class _EditTemplateState extends State<EditTemplate> {
                         // log(questions.toString());
                       });
                     },
-                    child: Text("add question"))
+                    child: const Text("add question"))
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            questions.length > 0
+            questions.isNotEmpty
                 ? Expanded(
                     child: ListView.builder(
                         scrollDirection: Axis.vertical,
@@ -125,30 +126,30 @@ class _EditTemplateState extends State<EditTemplate> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 30,
                                     ),
                                     Row(
                                       children: [
                                         Text(
                                           'Question ${index + 1}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        Spacer(),
+                                        const Spacer(),
                                         ElevatedButton(
                                             onPressed: () {
                                               setState(() {
                                                 questions.removeAt(index);
                                               });
                                             },
-                                            child: FaIcon(
+                                            child: const FaIcon(
                                               FontAwesomeIcons.trashCan,
                                             )),
                                       ],
                                     ),
-                                    Text(
+                                    const Text(
                                       "Question:",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -163,10 +164,10 @@ class _EditTemplateState extends State<EditTemplate> {
                                         });
                                       },
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
-                                    Text(
+                                    const Text(
                                       "Answer:",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -180,10 +181,10 @@ class _EditTemplateState extends State<EditTemplate> {
                                         });
                                       },
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
-                                    Text(
+                                    const Text(
                                       "Max credit:",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -205,8 +206,8 @@ class _EditTemplateState extends State<EditTemplate> {
                             ),
                           );
                         }))
-                : Text("There are no questions yet, add a question"),
-            SizedBox(
+                : const Text("There are no questions yet, add a question"),
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -216,8 +217,8 @@ class _EditTemplateState extends State<EditTemplate> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text("cancel")),
-                SizedBox(
+                    child: const Text("cancel")),
+                const SizedBox(
                   width: 80,
                 ),
                 ElevatedButton(
@@ -238,7 +239,7 @@ class _EditTemplateState extends State<EditTemplate> {
                         }).then((value) => Navigator.pop(context));
                       }
                     },
-                    child: Text("save"))
+                    child: const Text("save"))
               ],
             )
           ]),

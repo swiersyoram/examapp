@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:examapp/pages/teacher/edittemplate.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Users extends StatelessWidget {
   const Users({Key? key}) : super(key: key);
@@ -12,7 +10,7 @@ class Users extends StatelessWidget {
       appBar: AppBar(),
       body: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             const Text(
@@ -22,7 +20,7 @@ class Users extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             const Text(
@@ -32,7 +30,7 @@ class Users extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.grey),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
@@ -42,10 +40,10 @@ class Users extends StatelessWidget {
                     FirebaseFirestore.instance.collection("users").snapshots(),
                 builder: (context, AsyncSnapshot snapshot) {
                   if (snapshot.hasError) {
-                    return Text("something went wrong");
+                    return const Text("something went wrong");
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("data loading");
+                    return const Text("data loading");
                   }
                   final data = snapshot.requireData;
                   // log(data.docs);
@@ -54,7 +52,6 @@ class Users extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount: data.size,
                       itemBuilder: (context, index) {
-                        String id = data.docs[index].id;
                         return ListTile(
                           tileColor: index.isEven ? Colors.grey[300] : null,
                           title: Row(
@@ -66,7 +63,7 @@ class Users extends StatelessWidget {
                                     fontSize: 16,
                                     color: Colors.grey[700]),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Text(
                                 data.docs[index]["lastname"],
                                 style: TextStyle(
@@ -74,7 +71,7 @@ class Users extends StatelessWidget {
                                     fontSize: 16,
                                     color: Colors.grey[700]),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Text(
                                 data.docs[index]["studentid"],
                                 style: TextStyle(

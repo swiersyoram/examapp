@@ -1,11 +1,6 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:examapp/pages/student/check.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../teacher/edittemplate.dart';
 
 class ExamList extends StatelessWidget {
   final user;
@@ -76,7 +71,7 @@ class ExamList extends StatelessWidget {
                                     (route) => false,
                                   );
                                 },
-                                child: Text("start"))
+                                child: const Text("start"))
                           ]),
                         );
                       });
